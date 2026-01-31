@@ -1,0 +1,636 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Fern &amp; Footsteps Travels — Kashmir</title>
+  <meta name="description" content="Fern & Footsteps Travels — Kashmir-based travel company offering curated tours, local experiences, and seamless trip planning across Kashmir." />
+  <style>
+    :root{
+      --brand:#0ea5a4;        /* teal */
+      --brand2:#16a34a;       /* green */
+      --ink:#0f172a;
+      --muted:#64748b;
+      --bg:#ffffff;
+      --card:#f8fafc;
+      --line:#e2e8f0;
+      --shadow: 0 12px 30px rgba(2,6,23,.08);
+      --radius: 16px;
+      --max: 1120px;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink);
+      background:var(--bg);
+      line-height:1.5;
+    }
+    a{color:inherit}
+    .container{max-width:var(--max); margin:0 auto; padding:22px}
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:8px 12px; border:1px solid var(--line);
+      border-radius:999px; background:#fff;
+      color:var(--muted); font-size:14px;
+    }
+    .dot{width:10px; height:10px; border-radius:50%; background:linear-gradient(135deg,var(--brand),var(--brand2))}
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:20;
+      backdrop-filter:saturate(160%) blur(10px);
+      background:rgba(255,255,255,.75);
+      border-bottom:1px solid rgba(226,232,240,.7);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between; gap:18px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px; text-decoration:none;
+      font-weight:800; letter-spacing:.2px;
+    }
+    .logo{
+      width:40px; height:40px; border-radius:12px;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      box-shadow: 0 10px 20px rgba(14,165,164,.18);
+      position:relative; overflow:hidden;
+    }
+    .logo::after{
+      content:""; position:absolute; inset:-30%;
+      background:radial-gradient(circle at 30% 30%, rgba(255,255,255,.55), transparent 55%);
+      transform:rotate(12deg);
+    }
+    nav ul{list-style:none; display:flex; gap:16px; padding:0; margin:0; align-items:center}
+    nav a{
+      text-decoration:none; color:var(--muted); font-weight:600; font-size:14px;
+      padding:10px 10px; border-radius:10px;
+    }
+    nav a:hover{background:rgba(14,165,164,.08); color:var(--ink)}
+    .cta{
+      display:flex; gap:10px; align-items:center;
+    }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      padding:11px 14px; border-radius:12px;
+      border:1px solid var(--line);
+      background:#fff; text-decoration:none; font-weight:700; font-size:14px;
+    }
+    .btn-primary{
+      border:none;
+      background:linear-gradient(135deg,var(--brand),var(--brand2));
+      color:#fff;
+      box-shadow: 0 12px 22px rgba(2,6,23,.12);
+    }
+    .btn-primary:hover{filter:brightness(.98)}
+    .btn:hover{transform:translateY(-1px)}
+    /* Hero */
+    .hero{
+      padding:34px 0 10px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns: 1.05fr .95fr;
+      gap:26px;
+      align-items:stretch;
+    }
+    .hero-left{
+      padding:26px;
+      border-radius:var(--radius);
+      background:linear-gradient(180deg, rgba(14,165,164,.10), rgba(22,163,74,.08));
+      border:1px solid rgba(226,232,240,.7);
+      box-shadow: var(--shadow);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .sub{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      max-width:54ch;
+    }
+    .hero-actions{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .hero-stats{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:12px;
+      margin-top:18px;
+    }
+    .stat{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:14px;
+      padding:12px;
+    }
+    .stat strong{display:block; font-size:16px}
+    .stat span{display:block; color:var(--muted); font-size:12px; margin-top:2px}
+    .hero-right{
+      border-radius:var(--radius);
+      overflow:hidden;
+      border:1px solid rgba(226,232,240,.7);
+      box-shadow: var(--shadow);
+      position:relative;
+      min-height:340px;
+      background:
+        radial-gradient(1000px 500px at 20% 20%, rgba(14,165,164,.22), transparent 50%),
+        radial-gradient(900px 500px at 80% 30%, rgba(22,163,74,.20), transparent 50%),
+        linear-gradient(135deg, #0f172a 0%, #0b3b3a 60%, #0b3b22 100%);
+    }
+    .hero-right .overlay{
+      position:absolute; inset:0;
+      background:linear-gradient(180deg, rgba(2,6,23,.10), rgba(2,6,23,.55));
+    }
+    .hero-right .caption{
+      position:absolute; left:18px; right:18px; bottom:16px;
+      color:#fff;
+    }
+    .caption h2{margin:0 0 6px; font-size:20px}
+    .caption p{margin:0; opacity:.9; font-size:14px}
+    .badge-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:12px}
+    .badge{
+      background:rgba(255,255,255,.12);
+      border:1px solid rgba(255,255,255,.18);
+      padding:8px 10px;
+      border-radius:999px;
+      font-size:12px;
+      backdrop-filter: blur(8px);
+    }
+    /* Sections */
+    section{padding:28px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:18px;
+      margin-bottom:14px;
+    }
+    .section-title h3{margin:0; font-size:22px}
+    .section-title p{margin:0; color:var(--muted); font-size:14px; max-width:62ch}
+    .grid-3{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    .card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .card h4{margin:6px 0 6px; font-size:16px}
+    .card p{margin:0; color:var(--muted); font-size:14px}
+    .icon{
+      width:42px; height:42px; border-radius:14px;
+      background:#fff;
+      border:1px solid var(--line);
+      display:flex; align-items:center; justify-content:center;
+      font-size:18px;
+    }
+    /* Packages */
+    .packages{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap:14px;
+    }
+    .pkg{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      overflow:hidden;
+      box-shadow: 0 10px 24px rgba(2,6,23,.06);
+      display:flex; flex-direction:column;
+    }
+    .pkg .photo{
+      height:150px;
+      background:
+        radial-gradient(500px 180px at 25% 30%, rgba(14,165,164,.35), transparent 60%),
+        radial-gradient(450px 220px at 80% 40%, rgba(22,163,74,.30), transparent 60%),
+        linear-gradient(135deg,#0f172a,#0b3b3a,#0b3b22);
+      position:relative;
+    }
+    .tag{
+      position:absolute; top:12px; left:12px;
+      background:rgba(255,255,255,.90);
+      border:1px solid rgba(226,232,240,.9);
+      color:var(--ink);
+      padding:6px 10px;
+      border-radius:999px;
+      font-size:12px;
+      font-weight:700;
+    }
+    .pkg .body{padding:14px 14px 12px}
+    .pkg h4{margin:0 0 6px}
+    .meta{display:flex; gap:10px; flex-wrap:wrap; color:var(--muted); font-size:13px}
+    .meta span{display:inline-flex; align-items:center; gap:6px}
+    .price-row{
+      margin-top:auto;
+      display:flex; justify-content:space-between; align-items:center; gap:10px;
+      padding:12px 14px 14px;
+      border-top:1px solid var(--line);
+      background:#fff;
+    }
+    .price{font-weight:900}
+    .small{color:var(--muted); font-size:12px}
+    /* Testimonials */
+    .quote{
+      background:linear-gradient(180deg, rgba(14,165,164,.08), rgba(22,163,74,.06));
+      border:1px solid rgba(226,232,240,.9);
+      border-radius:var(--radius);
+      padding:16px;
+    }
+    .quote p{margin:0; color:var(--ink); font-size:14px}
+    .quote .by{margin-top:10px; color:var(--muted); font-size:13px; font-weight:700}
+    /* Contact */
+    .contact-wrap{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    form{
+      background:#fff;
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:16px;
+      box-shadow: 0 10px 24px rgba(2,6,23,.05);
+    }
+    label{display:block; font-size:13px; color:var(--muted); margin:10px 0 6px; font-weight:700}
+    input, select, textarea{
+      width:100%;
+      padding:11px 12px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      font:inherit;
+      background:#fff;
+      outline:none;
+    }
+    input:focus, select:focus, textarea:focus{
+      border-color: rgba(14,165,164,.65);
+      box-shadow: 0 0 0 4px rgba(14,165,164,.14);
+    }
+    textarea{min-height:110px; resize:vertical}
+    .form-row{display:grid; grid-template-columns: 1fr 1fr; gap:10px}
+    .form-actions{margin-top:12px; display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+    .note{font-size:12px; color:var(--muted)}
+    footer{
+      border-top:1px solid var(--line);
+      padding:20px 0 28px;
+      color:var(--muted);
+      font-size:13px;
+    }
+    .footer-grid{
+      display:flex; justify-content:space-between; gap:16px; flex-wrap:wrap; align-items:center;
+    }
+    .links{display:flex; gap:12px; flex-wrap:wrap}
+    .links a{color:var(--muted); text-decoration:none; font-weight:700}
+    .links a:hover{color:var(--ink)}
+    /* Responsive */
+    @media (max-width: 920px){
+      .hero-grid{grid-template-columns: 1fr; }
+      h1{font-size:36px}
+      .grid-3{grid-template-columns:1fr}
+      .packages{grid-template-columns:1fr}
+      .contact-wrap{grid-template-columns:1fr}
+      nav ul{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container nav" aria-label="Primary">
+      <a class="brand" href="#home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Fern &amp; Footsteps Travels</span>
+      </a>
+
+      <nav aria-label="Site">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#services">Services</a></li>
+          <li><a href="#packages">Packages</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta">
+        <a class="btn" href="tel:+910000000000" aria-label="Call Fern and Footsteps Travels">Call</a>
+        <a class="btn btn-primary" href="#contact">Get a Quote</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="container">
+    <section class="hero">
+      <div class="hero-grid">
+        <div class="hero-left">
+          <span class="pill"><span class="dot" aria-hidden="true"></span> Based in Kashmir • Curated local journeys</span>
+          <h1>Explore Kashmir with local experts.</h1>
+          <p class="sub">
+            Fern &amp; Footsteps Travels plans memorable Kashmir trips—handpicked stays, private cabs,
+            sightseeing, and authentic experiences. Tell us your dates and budget, and we’ll build a smooth itinerary.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#packages">View Packages</a>
+            <a class="btn" href="#contact">Plan My Trip</a>
+          </div>
+
+          <div class="hero-stats" aria-label="Highlights">
+            <div class="stat">
+              <strong>Local Guides</strong>
+              <span>Culture + hidden gems</span>
+            </div>
+            <div class="stat">
+              <strong>Custom Itineraries</strong>
+              <span>Made for your pace</span>
+            </div>
+            <div class="stat">
+              <strong>All-In Support</strong>
+              <span>From pickup to drop</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-right" aria-label="Kashmir scenic banner">
+          <img src="dal-lake (1).jpg" alt="Dal Lake, Srinagar" style="width:100%; height:auto;" />
+          <div class="overlay" aria-hidden="true"></div>
+          <div class="caption">
+            <h2>Dal Lake • Gulmarg • Pahalgam</h2>
+            <p>Comfortable stays, safe travel, and the best seasonal views—planned by locals.</p>
+            <div class="badge-row" aria-label="Trip styles">
+              <span class="badge">Family Trips</span>
+              <span class="badge">Honeymoons</span>
+              <span class="badge">Snow &amp; Ski</span>
+              <span class="badge">Trekking</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="section-title">
+        <h3>About Fern &amp; Footsteps</h3>
+        <p>
+          Kashmir-based travel planners focused on comfort, authenticity, and great pacing—so your trip feels relaxed, not rushed.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon" aria-hidden="true">🌿</div>
+          <h4>Local knowledge</h4>
+          <p>We match seasons, routes, and stays so you get the best views with less hassle.</p>
+        </div>
+        <div class="card">
+          <div class="icon" aria-hidden="true">🗺️</div>
+          <h4>Thoughtful itineraries</h4>
+          <p>Balanced plans—top spots + hidden corners—with time for shopping and local food.</p>
+        </div>
+        <div class="card">
+          <div class="icon" aria-hidden="true">🚗</div>
+          <h4>Reliable logistics</h4>
+          <p>Pickups, private cabs, hotel coordination, and support during your journey.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+      <div class="section-title">
+        <h3>Services</h3>
+        <p>Choose a complete package or build your own trip—hotels, cabs, and activities, all in one place.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="icon" aria-hidden="true">🏨</div>
+          <h4>Hotels &amp; Houseboats</h4>
+          <p>Curated stays in Srinagar, Gulmarg, Pahalgam, Sonamarg, plus Dal Lake houseboats.</p>
+        </div>
+        <div class="card">
+          <div class="icon" aria-hidden="true">🧑‍✈️</div>
+          <h4>Guided sightseeing</h4>
+          <p>Local guides for gardens, old Srinagar, markets, heritage spots, and photography points.</p>
+        </div>
+        <div class="card">
+          <div class="icon" aria-hidden="true">🥾</div>
+          <h4>Adventure add-ons</h4>
+          <p>Trekking, gondola planning, snow activities, and day hikes—based on season and fitness.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Packages -->
+    <section id="packages">
+      <div class="section-title">
+        <h3>Popular Packages</h3>
+        <p>Sample itineraries (customizable). Replace prices and inclusions with your actual details.</p>
+      </div>
+
+      <div class="packages">
+        <article class="pkg">
+          <div class="photo">
+            <img src="OIP1.webp" style="width:100%;height:150px;object-fit:cover;border-radius:16px 16px 0 0;" >
+            <span class="tag">Best for first-time</span>
+          </div>
+          <div class="body">
+            <h4>4N/5D Classic Kashmir</h4>
+            <div class="meta">
+              <span>📍 Srinagar • Gulmarg • Pahalgam</span>
+              <span>🛏️ Hotels + Houseboat</span>
+              <span>🚗 Private cab</span>
+            </div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="price">₹19,999</div>
+              <div class="small">per person (twin share)</div>
+            </div>
+            <a class="btn btn-primary" href="#contact">Enquire</a>
+          </div>
+        </article>
+
+        <article class="pkg">
+          <div class="photo">
+         <img src="OIP.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:16px 16px 0 0;" >
+            <span class="tag">Honeymoon</span>
+          </div>
+          <div class="body">
+            <h4>5N/6D Romantic Escape</h4>
+            <div class="meta">
+              <span>💐 Candlelight + Shikara</span>
+              <span>📍 Srinagar • Gulmarg</span>
+              <span>🧾 Personalized plan</span>
+            </div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="price">₹49,999</div>
+              <div class="small">couple package</div>
+            </div>
+            <a class="btn btn-primary" href="#contact">Enquire</a>
+          </div>
+        </article>
+
+        <article class="pkg">
+          <div class="photo">
+            <img src="gettyimages-472063335-2048x2048.jpg" style="width:100%;height:150px;object-fit:cover;border-radius:16px 16px 0 0;" >
+            <span class="tag">Winter special</span>
+          </div>
+          <div class="body">
+            <h4>4N/5D Snow &amp; Ski</h4>
+            <div class="meta">
+              <span>❄️ Gulmarg snow days</span>
+              <span>🎿 Optional ski lessons</span>
+              <span>📍 Srinagar • Gulmarg</span>
+            </div>
+          </div>
+          <div class="price-row">
+            <div>
+              <div class="price">₹30,999</div>
+              <div class="small">seasonal pricing</div>
+            </div>
+            <a class="btn btn-primary" href="#contact">Enquire</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials">
+      <div class="section-title">
+        <h3>Guest Reviews</h3>
+        <p>Add real reviews here (Google/WhatsApp). Keep them short and specific for trust.</p>
+      </div>
+
+      <div class="grid-3">
+        <div class="quote">
+          <p>“Perfect planning and smooth cab service. We covered all highlights without feeling rushed.”</p>
+          <div class="by">— Amit</div>
+        </div>
+        <div class="quote">
+          <p>“Houseboat stay and shikara ride were arranged beautifully. Great local suggestions.”</p>
+          <div class="by">— Kabir</div>
+        </div>
+        <div class="quote">
+          <p>“Quick support during the trip and flexible changes. Highly recommended for Kashmir.”</p>
+          <div class="by">— Vikas</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="section-title">
+        <h3>Get a Free Quote</h3>
+        <p>Share your dates and preferences. We’ll reply with a day-wise plan and clear costing.</p>
+      </div>
+
+      <div class="contact-wrap">
+        <form action="#" method="post" aria-label="Trip enquiry form">
+          <div class="form-row">
+            <div>
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" placeholder="Your name" required />
+            </div>
+            <div>
+              <label for="phone">Phone (WhatsApp)</label>
+              <input id="phone" name="phone" type="tel" placeholder="+91 98xxxxxx" required />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="email">Email</label>
+              <input id="email" name="email" type="email" placeholder="you@email.com" />
+            </div>
+            <div>
+              <label for="triptype">Trip type</label>
+              <select id="triptype" name="triptype">
+                <option>Family</option>
+                <option>Honeymoon</option>
+                <option>Friends</option>
+                <option>Solo</option>
+                <option>Corporate</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div>
+              <label for="from">Start date</label>
+              <input id="from" name="from" type="date" />
+            </div>
+            <div>
+              <label for="to">End date</label>
+              <input id="to" name="to" type="date" />
+            </div>
+          </div>
+
+          <label for="message">What do you want to include?</label>
+          <textarea id="message" name="message" placeholder="Example: Gulmarg gondola, houseboat, vegetarian meals, 1 day shopping, budget range…"></textarea>
+
+          <div class="form-actions">
+            <button class="btn btn-primary" type="submit">Send Enquiry</button>
+            <a class="btn" href="fernandfootstepstravels@gmail.com">Email Instead</a>
+          </div>
+        </form>
+
+        <div class="card" aria-label="Contact details">
+          <h4 style="margin:0 0 10px">Contact Details</h4>
+          <p style="margin:0 0 10px; color:var(--muted)">
+            <strong>Fern &amp; Footsteps Travels</strong><br/>
+            Based in Kashmir, India<br/>
+            Custom tours across Srinagar, Gulmarg, Pahalgam &amp; Sonamarg
+          </p>
+
+          <div style="display:grid; gap:10px; margin-top:10px">
+            <div class="card" style="background:#fff">
+              <p style="margin:0; font-size:14px"><strong>Phone:</strong> <a href="tel:+910000000000">+91 7051541015</a></p>
+              <p style="margin:4px 0 0; color:var(--muted); font-size:13px">9 AM – 9 PM (IST)</p>
+            </div>
+            <div class="card" style="background:#fff">
+              <p style="margin:0; font-size:14px"><strong>Email:</strong> <a href="mailto:fernandfootstepstravels@gmail.com">fernandfootstepstravels@gmail.com</a></p>
+              <p style="margin:4px 0 0; color:var(--muted); font-size:13px">We reply within 24 hours</p>
+            </div>
+            <div class="card" style="background:#fff">
+              <p style="margin:0; font-size:14px"><strong>Instagram:</strong> <a href="https://www.instagram.com/fernandfootstepstravels?igsh=ejluc21lYXppc3V4" target="_blank" aria-label="Instagram">
+  <img src="instagram.jpg" alt="Instagram" width="24"></a></p>
+            </div>
+          </div>
+
+          <div style="margin-top:12px">
+            <span class="pill"><span class="dot" aria-hidden="true"></span> “Travel slow. See more.”</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container footer-grid">
+        <div>
+          <strong style="color:var(--ink)">Fern &amp; Footsteps Travels</strong><br/>
+          <span>© <span id="year"></span> All rights reserved.</span>
+        </div>
+        <div class="links" aria-label="Footer links">
+          <a href="#about">About</a>
+          <a href="#packages">Packages</a>
+          <a href="#contact">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    // Auto year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
